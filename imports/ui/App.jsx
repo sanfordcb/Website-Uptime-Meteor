@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
+
+import { Business } from '../api/business.js';
 
 import TimelineWebsiteUptime from './TimelineWebsiteUptime.jsx';
 
-export default class App extends Component {
+class App extends Component {
   // Add method to iterate through Business collection
   // Create TimelineWebsiteUptime component w/ business name
   // Pass outage data via props to be used by TimelineTick
 
   render() {
+
+    console.log(this.props.business);
     return (
       <div className="container">
         <header>
@@ -18,3 +23,13 @@ export default class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  business: PropTypes.array.isRequired
+};
+
+export default createContainer(() => {
+  return {
+    business: Business.find({}).fetch()
+  };
+}, App);
