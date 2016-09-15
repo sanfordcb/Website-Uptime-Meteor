@@ -7,15 +7,31 @@ import { Business } from '../api/business.js';
 import TimelineWebsiteUptime from './TimelineWebsiteUptime.jsx';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      timelineCurrent: false
+    };
+  }
+
   componentDidMount() {
     Meteor.call('retrieveDowntimes');
+    this.setState({
+      timelineCurrent: true
+    });
   }
+
   buildTimelines() {
-    console.log(this.props.business);
+    return this.props.business.map((biz) => {
+      return (
+        <TimelineWebsiteUptime
+          key={biz._id}
+          downtimes={biz.downtimes}
+        />
+      );
+    });
   }
-  // Add method to iterate through Business collection
-  // Create TimelineWebsiteUptime component w/ business name
-  // Pass outage data via props to be used by TimelineTick
 
   render() {
     return (
@@ -23,11 +39,14 @@ class App extends Component {
         <header>
           <h1>Website Uptime Timeline</h1>
         </header>
-        <TimelineWebsiteUptime />
-        {this.buildTimelines()}
+          <ul>
+            {this.buildTimelines()}
+          </ul>
       </div>
+      
     );
   }
+  
 }
 
 App.propTypes = {

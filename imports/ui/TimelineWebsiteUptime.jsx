@@ -8,10 +8,12 @@ export default class TimelineWebsiteUptime extends Component {
 
   render() {
     return (
-      <div>
-        This is a placeholder...
-        <TimeTick />
-      </div>
+      <li>
+        <div>
+          This is a placeholder... {this.props.downtimes.length}
+          <TimeTick />
+        </div>
+      </li>
     );
   }
 }
