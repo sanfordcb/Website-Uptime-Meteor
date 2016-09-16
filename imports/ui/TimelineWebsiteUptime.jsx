@@ -5,13 +5,12 @@ import TimelineTick from './TimelineTick.jsx';
 import dateGenerator from '../utils/date-generator.js';
 
 export default class TimelineWebsiteUptime extends Component {
-  generateTimeTicks() {
+  generateTimelineTicks() {
     const timeline = [];
     for(let i = 30; i >= 0; i--) {
       let checkDay = dateGenerator(i).slice(0, 10);
       timeline.push(checkDay);
     }
-
     const downtimeTracker = {};
     
     if(!this.props.downtimes) {
@@ -36,13 +35,14 @@ export default class TimelineWebsiteUptime extends Component {
 
     this.props.downtimes.forEach((check) => {
       let checkStart = check.started_at.slice(0, 10);
-        if(check.duration >= 900) {
-          downtimeTracker[checkStart] = "_orange";
-        } else if(check.duration >= 5400){
-          downtimeTracker[checkStart] = "_red";
-        } else {
-          downtimeTracker[checkStart] = "_green";
-        }
+      
+      if(check.duration >= 5400) {
+        downtimeTracker[checkStart] = "_red";
+      } else if(check.duration >= 900){
+        downtimeTracker[checkStart] = "_orange";
+      } else {
+        downtimeTracker[checkStart] = "_green";
+      }
     });
       
     return timeline.map((date) => {
@@ -77,6 +77,7 @@ export default class TimelineWebsiteUptime extends Component {
           key={date}
           color={color}
           message={message}
+          dateId={date}
         />
       );
     });
@@ -87,13 +88,9 @@ export default class TimelineWebsiteUptime extends Component {
       <div>
           This is a placeholder...
           <div className='timeline'>
-            {this.generateTimeTicks()}
+            {this.generateTimelineTicks()}
           </div>
       </div>
     );
   }
 }
-
-// TimelineWebsiteUptime.propTypes = {
-//   downtimes: PropTypes.array.isRequired
-// };

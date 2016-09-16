@@ -9,17 +9,15 @@ import TimelineWebsiteUptime from './TimelineWebsiteUptime.jsx';
 class App extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      timelineCurrent: false
-    };
   }
 
   componentDidMount() {
-    Meteor.call('retrieveDowntimes');
-    this.setState({
-      timelineCurrent: true
-    });
+    // Commented out call to 'retrieveDowntimes' method
+    // due to limited data from call to Updown
+    // using call to 'getTestData' to populate with test data
+    
+    // Meteor.call('retrieveDowntimes');
+    Meteor.call('getTestData');
   }
 
   buildTimelines() {
@@ -46,7 +44,7 @@ class App extends Component {
       
     );
   }
-  
+
 }
 
 App.propTypes = {

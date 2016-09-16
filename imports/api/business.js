@@ -3,6 +3,8 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 import { HTTP } from 'meteor/http';
 
+import testData from '../utils/test-data.js';
+
 const updownKey = Meteor.settings.updownKey;
 
 export const Business = new Mongo.Collection('business');
@@ -25,6 +27,15 @@ Meteor.methods({
           Business.update(biz, { $set: { downtimes: data } });
         }
       });
+    });
+  },
+
+  // this method is just to retrieve test data I created in utils folder
+  // because results from API are limited
+  'getTestData'() {
+    Business.find().forEach((biz) => {
+      let data = testData[biz.updown_token];
+      Business.update(biz, { $set: { downtimes: data } });
     });
   }
 });

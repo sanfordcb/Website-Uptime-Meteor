@@ -6,6 +6,6 @@ Date.prototype.addDays = function(days) {
 
 export default function(num) {
   let startDate = new Date();
-  let resultDate = startDate.addDays(num);
+  let resultDate = startDate.addDays(num * -1);
   return resultDate.toISOString();
 }

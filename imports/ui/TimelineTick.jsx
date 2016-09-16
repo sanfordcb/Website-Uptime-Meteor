@@ -6,8 +6,8 @@ export default class TimelineTick extends Component {
     let tick;
 
     if(this.props.message) {
-      tick = <div className={this.props.color} data-tip data-for={this.props.key}>
-                <ReactToolTip id={this.props.key} type='light' effect='solid' border='true'>
+      tick = <div className={this.props.color} data-tip data-for={this.props.dateId}>
+                <ReactToolTip id={this.props.dateId} type='light' effect='solid'>
                   <span><b>{this.props.message}</b></span>
                 </ReactToolTip>
               </div>
