@@ -3,6 +3,7 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 import { HTTP } from 'meteor/http';
 
+import initData from '../utils/init-data.js';
 import testData from '../utils/test-data.js';
 
 const updownKey = Meteor.settings.updownKey;
@@ -10,6 +11,12 @@ const updownKey = Meteor.settings.updownKey;
 export const Business = new Mongo.Collection('business');
 
 if(Meteor.isServer) {
+  if(Business.find().count() === 0) {
+    initData.business.forEach((doc) => {
+      Business.insert(doc);
+    });
+  }
+
   Meteor.publish('business', function businessPublication() {
     return Business.find();
   });
