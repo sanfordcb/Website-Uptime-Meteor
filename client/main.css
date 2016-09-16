@@ -1,1 +1,70 @@
 /* CSS declarations go here */
+.timeline {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 302px;
+  height: 27px;
+  padding-top: 0px;
+  padding-left: 0px;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  border: 1px none #000;
+}
+
+._empty {
+  width: 6px;
+  height: 10px;
+  margin-top: 1px;
+  margin-left: 1px;
+  padding-right: 0px;
+  padding-left: 0px;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  background-color: #eee;
+}
+
+._green {
+  width: 6px;
+  height: 10px;
+  margin-top: 1px;
+  margin-left: 1px;
+  padding-right: 0px;
+  padding-left: 0px;
+  border: 1px solid #86c35d;
+  border-radius: 2px;
+  background-color: #86c35d;
+}
+
+._orange {
+  width: 6px;
+  height: 15px;
+  margin-left: 1px;
+  border: 1px solid #c9a548;
+  border-radius: 3px;
+  background-color: #c9a548;
+}
+
+._red {
+  width: 6px;
+  height: 15px;
+  margin-left: 1px;
+  border: 1px solid #dc2620;
+  border-radius: 3px;
+  background-color: #dc2620;
+}
+
+._current_day {
+  width: 6px;
+  height: 10px;
+  margin-top: 1px;
+  margin-left: 1px;
+  padding-right: 0px;
+  padding-left: 0px;
+  border: 1px solid #86c35d;
+  border-radius: 2px;
+  background-color: #eee;
+}

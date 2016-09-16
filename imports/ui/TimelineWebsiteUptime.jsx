@@ -84,14 +84,12 @@ export default class TimelineWebsiteUptime extends Component {
 
   render() {
     return (
-      <li>
-        <div>
+      <div>
           This is a placeholder...
-          <ul>
+          <div className='timeline'>
             {this.generateTimeTicks()}
-          </ul>
-        </div>
-      </li>
+          </div>
+      </div>
     );
   }
 }
