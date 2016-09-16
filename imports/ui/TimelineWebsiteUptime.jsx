@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import TimeTick from './TimeTick.jsx';
+import TimelineTick from './TimelineTick.jsx';
 
 import dateGenerator from '../utils/date-generator.js';
 
@@ -24,9 +24,9 @@ export default class TimelineWebsiteUptime extends Component {
         if(date === today) {
           color = "_current_day";
         }
-
+        
         return (
-          <TimeTick
+          <TimelineTick
             key={date}
             color={color}
           />
@@ -61,10 +61,22 @@ export default class TimelineWebsiteUptime extends Component {
         color = "_current_day";
       }
 
+
+      let message = '';
+
+      if(color === "_orange") {
+        message = "15 Minute Outage";
+      }
+
+      if(color === "_red") {
+        message = "90 Minute Outage";
+      }
+
       return (
-        <TimeTick
+        <TimelineTick
           key={date}
           color={color}
+          message={message}
         />
       );
     });
