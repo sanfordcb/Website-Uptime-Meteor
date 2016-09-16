@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 export default class TimeTick extends Component {
   render() {
     return (
-      <div>
-        This is a TimeTick
-      </div>
+      <li>
+        The color is {this.props.color}
+      </li>
     );
   }
 }
